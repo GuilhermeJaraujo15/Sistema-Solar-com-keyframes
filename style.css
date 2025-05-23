@@ -1,0 +1,252 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: black;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.solar-system {
+    position: relative;
+    width: 700px;
+    height: 700px;
+}
+
+.sun {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    box-shadow: 0 0 60px #ff4500;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.sun img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+
+.orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.rotator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin linear infinite;
+}
+
+.planet {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@keyframes spin {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+
+.mercurio {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/4a/Mercury_in_true_color.jpg');
+}
+
+.venus {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg');
+}
+
+.terra {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg');
+}
+
+.marte {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg');
+}
+
+.jupiter {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e2/Jupiter.jpg');
+}
+
+.saturno {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/c/c7/Saturn_during_Equinox.jpg');
+}
+
+.urano {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3d/Uranus2.jpg');
+}
+
+.netuno {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/56/Neptune_Full.jpg');
+}
+
+
+.planet.mercurio {
+    width: 8px;
+    height: 8px;
+}
+
+.planet.venus {
+    width: 10px;
+    height: 10px;
+}
+
+.planet.terra {
+    width: 12px;
+    height: 12px;
+}
+
+.planet.marte {
+    width: 10px;
+    height: 10px;
+}
+
+.planet.jupiter {
+    width: 24px;
+    height: 24px;
+}
+
+.planet.saturno {
+    width: 20px;
+    height: 20px;
+}
+
+.planet.urano {
+    width: 18px;
+    height: 18px;
+}
+
+.planet.netuno {
+    width: 18px;
+    height: 18px;
+}
+
+
+.info-panel {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 20;
+    font-family: Arial, sans-serif;
+}
+
+.info-card {
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    width: 140px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    position: relative;
+    cursor: pointer;
+}
+
+.info-card::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    right: 130%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--tooltip-color, #fff);
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: normal;
+    width: max-content;
+    max-width: 220px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 30;
+    line-height: 1.4;
+}
+
+.info-card:hover::after {
+    opacity: 1;
+}
+
+.info-card.sol {
+    background: #f7b500;
+    --tooltip-color: #f7b500;
+}
+
+.info-card.mercurio {
+    background: #5a6c8c;
+    --tooltip-color: #5a6c8c;
+}
+
+.info-card.venus {
+    background: #c8917c;
+    --tooltip-color: #c8917c;
+}
+
+.info-card.terra {
+    background: #547da6;
+    --tooltip-color: #547da6;
+}
+
+.info-card.marte {
+    background: #e1523d;
+    --tooltip-color: #e1523d;
+}
+
+.info-card.jupiter {
+    background: #a29683;
+    --tooltip-color: #a29683;
+}
+
+.info-card.saturno {
+    background: #7c6175;
+    --tooltip-color: #7c6175;
+}
+
+.info-card.urano {
+    background: #7cc6c8;
+    --tooltip-color: #7cc6c8;
+}
+
+.info-card.netuno {
+    background: #224fdd;
+    --tooltip-color: #224fdd;
+}
